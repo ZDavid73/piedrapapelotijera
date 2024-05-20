@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel y Tijera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="status">Conectando...</div>
+  <div id="game">
+    <div id="playerInfo"></div>
+    <div>
+      <button onclick="makeMove('rock')">✊ Piedra</button>
+      <button onclick="makeMove('paper')">✋ Papel</button>
+      <button onclick="makeMove('scissors')">✌ Tijera</button>
+    </div>
+    <div id="results"></div>
+    <div id="scores"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.5s; /* Transición de color de fondo */
+}
+
+#status {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333; /* Color de texto personalizado */
+}
+
+#game {
+    display: none;
+    text-align: center;
+    transition: display 1s; /* Transición de visibilidad */
+}
+
+button {
+    font-size: 1.5em;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: #fff; /* Color de texto del botón */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutíl */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Transición de color y escala */
+}
+
+button:hover {
+    background-color: #45a049; /* Cambio de color al pasar el cursor */
+}
+
+button:active {
+    transform: translateY(2px); /* Efecto de presionar el botón */
+    box-shadow: none; /* Eliminar sombra al presionar */
+}
+
+#results, #scores {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555; /* Color de texto personalizado */
+}
+

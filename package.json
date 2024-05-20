@@ -1,0 +1,12 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "Juego multijugador de Piedra, Papel y Tijera",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "ws": "^7.4.5"
+  }
+}
