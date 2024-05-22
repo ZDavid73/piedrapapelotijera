@@ -1,4 +1,5 @@
 const WebSocket = require('ws');
+const supabase = require('./supabaseClient');
 
 const wss = new WebSocket.Server({ port: 8080 });
 
@@ -12,7 +13,7 @@ wss.on('connection', (ws) => {
 
     ws.send(JSON.stringify({ type: 'welcome', playerId }));
 
-    ws.on('message', (message) => {
+    ws.on('message', async (message) => {
       const data = JSON.parse(message);
 
       if (data.type === 'move') {
@@ -21,6 +22,8 @@ wss.on('connection', (ws) => {
         if (gameState.player1Move && gameState.player2Move) {
           const result = determineWinner(gameState.player1Move, gameState.player2Move);
           updateScores(result);
+
+          await saveGameResult(players[0], players[1], result);
 
           players.forEach((player) => {
             player.ws.send(JSON.stringify({
@@ -68,6 +71,20 @@ function updateScores(result) {
   } else if (result === 'player2') {
     players[0].losses++;
     players[1].wins++;
+  }
+}
+
+async function saveGameResult(player1, player2, result) {
+  const { data, error } = await supabase
+    .from('game_results')
+    .insert([
+      { player1_id: player1.id, player2_id: player2.id, result }
+    ]);
+
+  if (error) {
+    console.error('Error saving game result:', error);
+  } else {
+    console.log('Game result saved:', data);
   }
 }
 
